@@ -1,7 +1,0 @@
-{
-    "users": [
-            {"name":"Morten","userId":123,"email":"morten@mail.dk"},
-            {"name":"Karsten","userId":67,"email":"Karsten@mail.dk"},
-            {"name":"Pia","userId":33,"email":"pia@mail.dk"}
-    ]
-}
