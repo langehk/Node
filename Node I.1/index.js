@@ -2,15 +2,16 @@
 const fs = require('fs');
 const readline = require('readline-sync');
 
-class User {
-    constructor(name, userId, email) {
-    this.name = name;
-    this.userId = userId;
-    this.email = email; 
+
+class User{
+    constructor(name, userId, email){
+        this.name = name;
+        this.userId = userId;
+        this.email = email;
     }
 }
 
-let newUser = new User(); 
+var newUser = new User();
 
 let name = readline.question("Enter name: ");
 newUser.name = name;
@@ -26,11 +27,21 @@ newUser.email = email;
 
 console.log(`Thanks! Now there will be spam heading your way! ${email}`);
 
+fs.readFile('./user.json', 'utf-8', function(err, data) {
+	if (err) throw err
 
-let data = JSON.stringify(newUser);
-fs.writeFileSync('./user.json', data);
+	var objects = JSON.parse(data)
+	objects.users.push(newUser);
+
+    console.log(objects)
+    
+    fs.writeFile('./user.json', JSON.stringify(objects), 'utf-8', function(err) {
+        if (err) throw err
+        console.log('Done!')
+    })
+});
 
 // Saving data to JSON format, to save as objects.
-// Also be able to "GET" the JSON objects, and use them as JS objects.
+// Also be able to "GET" the JSON objects, and use them as JS objects 
 
 
