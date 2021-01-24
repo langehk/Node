@@ -30,7 +30,7 @@ console.log(`Thanks! Now there will be spam heading your way! ${email}`);
 fs.readFile('./user.json', 'utf-8', function(err, data) {
 	if (err) throw err
 
-	var objects = JSON.parse(data)
+	var objects = JSON.parse(data);
 	objects.users.push(newUser);
 
     console.log(objects)
